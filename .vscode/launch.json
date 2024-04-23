@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Command Line",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "requireExactSource": false,
+            "program": "${workspaceFolder}/bin/Debug/net7.0/RealPlay.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        }
+        
+    ]
+}
