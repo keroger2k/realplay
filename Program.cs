@@ -11,7 +11,8 @@ namespace FileDownloader
         {
             var urls = new List<string>()
             {
-                "https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669517/1651036-C1UEIFOXO4HN.mp4",
+"https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669491/1650973-MYO0CPG770NK.mp4",
+"https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669508/1651014-D52LFAP3XX76.mp4"
             };
 
             int i = 1;
@@ -19,20 +20,7 @@ namespace FileDownloader
             {
                 var headers = new WebHeaderCollection
             {
-                // {"Sec-Ch-Ua", "\"Chromium\";v=\"112\", \"Google Chrome\";v=\"112\", \"Not:A-Brand\";v=\"99\""},
-                // {"Dnt", "1"},
-                // {"Accept-Encoding", "gzip, deflate"},
-                // {"Sec-Ch-Ua-Mobile", "?0"},
-                // {"User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"},
-                // {"Sec-Ch-Ua-Platform", "\"Windows\""},
-                // {"Accept", "*/*"},
-                // {"Sec-Fetch-Site", "cross-site"},
-                // {"Sec-Fetch-Mode", "no-cors"},
-                // {"Sec-Fetch-Dest", "video"},
                  {"Referer", "https://app.realplay.us/"},
-                // {"Accept-Language", "en-US,en;q=0.9"},
-                // {"Range", "bytes=0-100000000"},
-                // {"If-Range", "\"078e6c0a41bf4fbab098dcfa08cb14f2\""}
             };
                 var filePath = $"c:\\gc-downloads\\{i++}.mp4";
                 DownloadFile(url, headers, filePath);
