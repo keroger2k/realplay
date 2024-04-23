@@ -363,3 +363,9 @@ MigrationBackup/
 FodyWeavers.xsd
 log*.txt
 obj/RealPlay.csproj.nuget.dgspec.json
+obj/project.nuget.cache
+obj/project.nuget.cache
+obj/Debug/net7.0/RealPlay.AssemblyInfo.cs
+obj/Debug/net7.0/RealPlay.AssemblyInfoInputs.cache
+obj/Debug/net7.0/RealPlay.assets.cache
+obj/Debug/net7.0/RealPlay.GeneratedMSBuildEditorConfig.editorconfig
