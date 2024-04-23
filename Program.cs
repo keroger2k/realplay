@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Runtime.CompilerServices;
 using static System.Net.WebRequestMethods;
 
 namespace FileDownloader
@@ -11,33 +12,31 @@ namespace FileDownloader
         {
             var urls = new List<string>()
             {
-"https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669491/1650973-MYO0CPG770NK.mp4",
-"https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669508/1651014-D52LFAP3XX76.mp4"
+                "https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669491/1650973-MYO0CPG770NK.mp4",
+                "https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669508/1651014-D52LFAP3XX76.mp4",    
             };
 
-            int i = 1;
+            var downloadTask = new List<Task>();
             foreach (var url in urls)
             {
-                var headers = new WebHeaderCollection
-            {
-                 {"Referer", "https://app.realplay.us/"},
-            };
-                var filePath = $"c:\\gc-downloads\\{i++}.mp4";
-                DownloadFile(url, headers, filePath);
-                Console.WriteLine("Download completed!");
+                downloadTask.Add(DownloadFile(url, $"c:\\gc-downloads\\{Guid.NewGuid()}.mp4"));
             }
+
+            Console.WriteLine($"Downloading { downloadTask.Count } files");
+            Task.WaitAll(downloadTask.ToArray());
+            Console.WriteLine("Download completed!");
+
         }
 
-        static void DownloadFile(string url, WebHeaderCollection headers, string filePath)
+        static async Task DownloadFile(string url, string filePath)
         {
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "GET";
-                request.Headers = headers;
-
-                using (var response = (HttpWebResponse)request.GetResponse())
-                using (var stream = response.GetResponseStream())
+                var myClient = new HttpClient(new HttpClientHandler() { UseDefaultCredentials = true });
+                myClient.DefaultRequestHeaders.Add("Referer", "https://app.realplay.us/");
+                
+                using (var response = await myClient.GetAsync(url))
+                using (var stream = await response.Content.ReadAsStreamAsync())
                 using (var fileStream = System.IO.File.Create(filePath))
                 {
                     stream.CopyTo(fileStream);
