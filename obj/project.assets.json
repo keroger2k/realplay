@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kyle\\Code\\RealPlay\\RealPlay\\RealPlay.csproj",
+      "projectUniqueName": "C:\\Users\\kyle\\Code\\RealPlay\\RealPlay.csproj",
       "projectName": "RealPlay",
-      "projectPath": "C:\\Users\\kyle\\Code\\RealPlay\\RealPlay\\RealPlay.csproj",
+      "projectPath": "C:\\Users\\kyle\\Code\\RealPlay\\RealPlay.csproj",
       "packagesPath": "C:\\Users\\kyle\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kyle\\Code\\RealPlay\\RealPlay\\obj\\",
+      "outputPath": "C:\\Users\\kyle\\Code\\RealPlay\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kyle\\AppData\\Roaming\\NuGet\\NuGet.Config"
