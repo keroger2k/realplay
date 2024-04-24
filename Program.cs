@@ -2,7 +2,9 @@
 using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using static System.Net.WebRequestMethods;
+
 
 namespace FileDownloader
 {
@@ -10,6 +12,13 @@ namespace FileDownloader
     {
         static void Main(string[] args)
         {
+            string PATH = @"c:\\gc-downloads\\{0}";
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                PATH = @"/tmp/gc-downloads/{0}.mp4";
+                Console.WriteLine("Running on a mac...");
+            }
+
             var urls = new List<string>()
             {
                 "https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669491/1650973-MYO0CPG770NK.mp4",
@@ -19,7 +28,7 @@ namespace FileDownloader
             var downloadTask = new List<Task>();
             foreach (var url in urls)
             {
-                downloadTask.Add(DownloadFile(url, $"c:\\gc-downloads\\{Guid.NewGuid()}.mp4"));
+                downloadTask.Add(DownloadFile(url, string.Format(PATH, Guid.NewGuid())));
             }
 
             Console.WriteLine($"Downloading { downloadTask.Count } files");
