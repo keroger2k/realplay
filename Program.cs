@@ -15,20 +15,25 @@ namespace FileDownloader
             string PATH = @"c:\\gc-downloads\\{0}";
             if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                PATH = @"/tmp/gc-downloads/{0}.mp4";
+                PATH = @"/tmp/gc-downloads/{0}";
                 Console.WriteLine("Running on a mac...");
             }
 
             var urls = new List<string>()
             {
-                "https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669491/1650973-MYO0CPG770NK.mp4",
-                "https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669508/1651014-D52LFAP3XX76.mp4",    
+                "https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669495/1650982-YEPK5YVPJDFR.mp4",
+                "https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669496/1650986-KVP3XX75MAAP.mp4",
+                "https://realplay-app.s3.amazonaws.com/videos/2024/13/8edc0e14-c11d-4560-b438-7799288149af/669512/1651027-N0EQL84N66P7.mp4",
+                "https://realplay-app.s3.amazonaws.com/videos/2024/13/da302e33-9787-41d2-95a9-e9db8c124194/671101/1655332-54HMSFQBSVVW.mp4",
+                "https://realplay-app.s3.amazonaws.com/videos/2024/13/da302e33-9787-41d2-95a9-e9db8c124194/671144/1655409-QSVT7OOX93AM.mp4",
+                "https://realplay-app.s3.amazonaws.com/videos/2024/13/da302e33-9787-41d2-95a9-e9db8c124194/671183/1655502-1SZIK6WOQUAQ.mp4",
+
             };
 
             var downloadTask = new List<Task>();
             foreach (var url in urls)
             {
-                downloadTask.Add(DownloadFile(url, string.Format(PATH, Guid.NewGuid())));
+                downloadTask.Add(DownloadFile(url, string.Format(PATH + ".mp4", Guid.NewGuid())));
             }
 
             Console.WriteLine($"Downloading { downloadTask.Count } files");
